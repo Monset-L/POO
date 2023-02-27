@@ -23,6 +23,8 @@ heroe= Personaje(especieH,nombreH,alturaH)
 villano= Personaje(especieV,nombreV,alturaV)
 
 #3.Usar atributos
+
+#Ejemplo del Set para 1 atributo
 heroe.setNombre(" Pepe pecas ")     #Cambiar el atributo por medio del set, ignorando lo demás 
 
 print("")
@@ -34,7 +36,9 @@ print("y tiene una altura de: "+ str(heroe.getAltura()))
 heroe.correr(False)
 heroe.lanzarGranadas()
 heroe.recargarArma(recargarV)
-heroe.__pensar()
+
+#Ejemplo de un método privado
+#heroe.__pensar()
 
 
 print("")
