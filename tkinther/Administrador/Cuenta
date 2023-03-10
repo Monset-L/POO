@@ -1,0 +1,15 @@
+from tkinter import *
+from tkinter import messagebox
+
+login=Tk ()
+
+def __init__(self):
+    self.__No.cuenta = None
+    self.__Titular = None
+    self.__Edad = None
+    self.__saldo= None
+    
+
+#def depositar():
+    #self.__saldo= cantidad
+    
