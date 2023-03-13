@@ -1,12 +1,20 @@
 import tkinter as tk
 from tkinter import Tk, Button, Frame,messagebox,ttk,Label,Entry
-from Formulario import *
+
 
 
 login=Tk()
-#seccion1=Frame(login,bg="#9BC1BC")
-#seccion1.pack(expand=True,fill='both')
 
+menu=None
+deposito = None
+retiro = None
+consulta = None
+titular = tk.StringVar()
+passw = tk.StringVar()
+saldo= tk.DoubleVar()
+cantidad = tk.DoubleVar()
+
+saldo.set(170)
 
 def crear_login():
     global saldo
@@ -15,7 +23,6 @@ def crear_login():
     login.geometry("300x300")
     titulo = Label(text="Caja Popular",fg="Black",font=('Times',30),bg="#9BC1BC")
     titulo.place(x=40,y=25)
-    
     tk.Label(login,text="Usuario/Titular").place(x=30, y=100)
     tk.Entry(login, textvariable=titular).place(x=120, y=100)
     tk.Label(login, text="Password").place(x=40, y=130)
@@ -74,9 +81,7 @@ def depositar():
     deposito_menu = tk.Tk()
     deposito_menu.title("Deposito")
     deposito_menu.geometry("300x300")
-    titulo = Label(text="Depositar en cuenta",fg="Black",font=('Times',30),bg="#9BC1BC")
-    titulo.place(x=40,y=25)
-    
+
     tk.Label(deposito_menu,text="Saldo disponible",font=10).place(x=50, y=50)
     label=tk.Label(deposito_menu, text=str(saldo.get()))
     label.place(x=200, y=50)
@@ -87,11 +92,14 @@ def depositar():
     menu.iconify()
 
 def consultar():
+    
     global consulta_menu
     global saldo
     consulta_menu = tk.Tk()
     consulta_menu.title("Consulta")
     consulta_menu.geometry("300x300")
+    tk.Label(consulta_menu,text="No. Cuenta",font=10).place(x=50, y=100)
+    tk.Label(consulta_menu,text="140434986521").place(x=200, y=100)
     tk.Label(consulta_menu,text="Saldo disponible",font=10).place(x=50, y=50)
     label=tk.Label(consulta_menu, text=str(saldo.get()))
     label.place(x=200, y=50)
