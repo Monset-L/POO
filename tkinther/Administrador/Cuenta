@@ -1,15 +1,34 @@
-from tkinter import *
+from Formulario import *
 from tkinter import messagebox
 
 login=Tk ()
 
-def __init__(self):
-    self.__No.cuenta = None
-    self.__Titular = None
-    self.__Edad = None
-    self.__saldo= None
+class Cuenta:
+    def __init__(self,No_cuenta,titular,edad,saldo):
+        self.__No.cuenta = No_cuenta
+        self.titular = titular
+        self.edad = edad
+        self.__saldo= saldo
     
+    def consultar_saldo(self):
+        return self.__saldo
+    
+    def ingresar_efectivo(self,cantidad):
+        self.__saldo += cantidad
+    
+    def retirar_efec(self,cantidad):
+        if cantidad <= self.__saldo:
+            self.__saldo -= cantidad
+        else:
+            messagebox.showinfo( "Saldo insuficiente en la cuenta")
+            
+    def depositar_otcuenta (self, cuenta_destino, cantidad):
+        if cantidad<= self.__saldo:
+            self.__saldo -= cantidad
+            cuenta_destino.ingresar_efectivo(cantidad)
+        else:
+            messagebox.showinfo( "Saldo insuficiente")
+        
 
-#def depositar():
-    #self.__saldo= cantidad
+
     
