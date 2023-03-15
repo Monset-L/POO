@@ -1,16 +1,13 @@
-from tkinter import Tk, Button, Frame,messagebox,ttk,Label,Entry
-import tkinter as tk
+from tkinter import messagebox
 import random
-
-#Interfaz=Tk()
-
+    
 class matricula():
-    def __init__(self,nombre,apellido_paterno, apellido_materno,ano_nacimiento, carrera):
-        self.nombre = nombre
-        self.apellido_paterno = apellido_paterno
-        self.apellido_materno = apellido_materno
-        self.ano_nacimiento = ano_nacimiento
-        self.carrera = carrera
+    def __init__(self,Carrera,Anonacimiento, Nombre,Apellpaterno,Apellmaterno):
+        self.nombre = Nombre
+        self.apellido_paterno = Apellpaterno
+        self.apellido_materno = Apellmaterno
+        self.ano_nacimiento = Anonacimiento
+        self.carrera = Carrera
 
     def generar_matricula(self):
         matricula = ""
@@ -21,15 +18,11 @@ class matricula():
         tres_letras_apellido_materno = self.apellido_materno[:3]
         tres_primeras_letras_carrera = self.carrera[:3]
         tres_digitos_aleatorios = str(random.randint(100, 999))
-        
+            
         matricula = tres_primeras_letras_carrera + ano_actual + ano_nacimiento + primera_letra_nombre + tres_letras_apellido_paterno + tres_letras_apellido_materno + tres_digitos_aleatorios
-        
+            
         return matricula
     
-matricula = matricula("GUADALUPE", "JUAREZ", "ESCAMILLA", 2003, "SISTEMAS")
-
 matricula_generada = matricula.generar_matricula()
-    
-(messagebox.showinfo("Tu matrícula es: ",matricula_generada))
 
-#tk.mainloop()
+matricula_generada = (messagebox.showinfo("Tu matrícula es: ",matricula_generada))

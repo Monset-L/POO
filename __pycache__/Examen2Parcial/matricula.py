@@ -1,11 +1,13 @@
 import tkinter as tk
-from validar import *
 import random
 from tkinter import Tk, Button, Frame,messagebox,ttk,Label,Entry
+from validarr import *
 
-def validador ():
-    val.comprobar(Correo.get(),Contraseña.get())
 
+def interfaz():
+    val.generar_matricula(Carrera.get(),Anonacimiento.get(), Nombre.get(),Apellpaterno.get(),Apellmaterno.get())
+
+val = matricula()
 
 ventana= Tk()
 ventana.title("Matrícula")
@@ -21,11 +23,6 @@ Carrera= Entry(seccion1)
 Carrera.place(x=300, y=130) 
 textcarrera = Label(text="Carrera:",fg="Black",font=(8))
 textcarrera.place(x=190,y=130)
-
-Anocurso= Entry(seccion1)
-Anocurso.place(x=300, y=155) 
-textanocurso = Label(text="Año en curso:",fg="Black",font=(8))
-textanocurso.place(x=190,y=155)
 
 Anonacimiento= Entry(seccion1)
 Anonacimiento.place(x=300, y=180) 
@@ -47,7 +44,7 @@ Apellmaterno.place(x=300, y=240)
 textapellidomaterno= Label(text="Apellido materno:",fg="Black",font=(8))
 textapellidomaterno.place(x=130,y=240)
 
-boton= Button(seccion1,text="Asignar",fg="black",bg="#F4F1BB",font=(10),command=login)
-boton.place(x=280,y=20)
+boton= Button(seccion1,text="Asignar",fg="black",bg="#F4F1BB",font=(10),command=interfaz)
+boton.place(x=400,y=20)
 
 ventana.mainloop()
