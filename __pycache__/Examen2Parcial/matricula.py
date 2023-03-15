@@ -3,12 +3,6 @@ import random
 from tkinter import Tk, Button, Frame,messagebox,ttk,Label,Entry
 from validarr import *
 
-
-def interfaz():
-    val.generar_matricula(Carrera.get(),Anonacimiento.get(), Nombre.get(),Apellpaterno.get(),Apellmaterno.get())
-
-val = matricula()
-
 ventana= Tk()
 ventana.title("Matrícula")
 ventana.geometry("600x450")
@@ -18,6 +12,17 @@ titulo.place(x=190,y=20)
 
 seccion1=Frame(ventana,bg="#9BC1BC")
 seccion1.pack(expand=True,fill='both') 
+
+def interfaz():
+    Nombre1 = Nombre.get()
+    Carrera1 = Carrera.get()
+    Apellpaterno1 = Apellpaterno.get()
+    Apellmaterno1 = Apellmaterno.get()
+    Anonacimiento1 = Anonacimiento.get()
+    
+    val = matricula(Carrera1,Anonacimiento1,Nombre1,Apellpaterno1,Apellmaterno1)
+    val.generar_matricula()
+
 
 Carrera= Entry(seccion1)
 Carrera.place(x=300, y=130) 
