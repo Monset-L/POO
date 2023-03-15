@@ -3,7 +3,6 @@ import tkinter as tk
 import random
 
 #Interfaz=Tk()
-
 class matricula():
     def __init__(self,nombre,apellido_paterno, apellido_materno,ano_nacimiento, carrera):
         self.nombre = nombre
