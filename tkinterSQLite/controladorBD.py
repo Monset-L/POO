@@ -47,3 +47,30 @@ class controladorDB:
         
         print(conHa)
         return conHa
+    
+    def consultaUsuario(self,id):  #Método
+        #1. Preparo la conexión
+        conx= self.conexionBD()
+        
+        #2.Verificar el id no esté vacio
+        if(id == ""):
+            messagebox.showwarning("Cuidado", "Id vacio escribe uno valido")
+            conx.close()
+        else:
+            #3. Proceder a buscar
+            try:
+                #4. Preparar lo necesario para el select
+                cursor= conx.cursor()
+                sqlSelect="select * from TBRegistrados where id="+id
+                
+                #5. Ejecución y guardado de la consulta
+                cursor.execute(sqlSelect)
+                RSusuario = cursor.fetchall()
+                conx.close()
+                
+                return RSusuario #guardar en una variable
+                
+            except sqlite3.OperationalError:
+                print("Error Consulta")
+        
+    
