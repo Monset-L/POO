@@ -1,4 +1,4 @@
-from tkinter import messagebox
+from tkinter import messagebox,ttk
 import sqlite3
 import bcrypt
 
@@ -73,4 +73,6 @@ class controladorDB:
             except sqlite3.OperationalError:
                 print("Error Consulta")
         
+        
+
     
