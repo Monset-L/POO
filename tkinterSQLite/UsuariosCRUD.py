@@ -13,6 +13,9 @@ def ejecutainsert():
 
 #Funcion para buscar un usuario
 def ejecutaSelectU():
+    for i in textBus.get_children():
+        textBus.delete(i)
+        
     rsUsuario=controlador.consultaUsuario(varBus.get())
     
     for usu in rsUsuario:
@@ -24,7 +27,17 @@ def ejecutaSelectU():
     
     else:
         messagebox.showinfo("Id no encontrado","Usuario no registrado en BD")
-             
+      
+      
+#Función consultar usuario       
+def ejecutarSelectCU():
+    for i in TablaC.get_children():
+        TablaC.delete(i)
+        
+    consultar= controlador.ConsultarUsuario()   
+     
+    for datos in consultar:
+        TablaC.insert("",tk.END, text="",values=datos)
 
 Ventana= Tk()
 Ventana.title("CRUD Usuarios")
@@ -79,6 +92,24 @@ textBus.column("#4",width=150)
 textBus.pack()              #Aqui se tiene que mostrar el id 
 
   
+#Panel consultar usuarios
+titulo3=Label(pestana3, text="Consultar usuarios",fg="green",font=("Modern",18)).pack()
+btnBusqueda=Button(pestana3,text="Consultar",command=ejecutarSelectCU).pack()
+columns=("id","nombre","correo","contraseña")
+TablaC= ttk.Treeview(pestana3,columns=columns,show ="headings")
+
+TablaC.heading("id",text="ID",anchor=CENTER)
+TablaC.heading("nombre",text="Nombre",anchor=CENTER)
+TablaC.heading("correo",text="Correo",anchor=CENTER)
+TablaC.heading("contraseña",text="Contraseña",anchor=CENTER) 
+
+TablaC.column("id",anchor=tk.W,width=1)
+TablaC.column("nombre",anchor=tk.W,width=100)
+TablaC.column("correo",anchor=tk.W,width=150)
+TablaC.column("contraseña",anchor=tk.W,width=180)
+
+TablaC.pack()
+
 
 panel.add(pestana1,text="Formulario de usuarios")
 panel.add(pestana2,text="Buscar usuario")
