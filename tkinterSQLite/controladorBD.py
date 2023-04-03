@@ -90,3 +90,7 @@ class controladorDB:
         except sqlite3.OperationalError:
                 print("Error Consulta")
     
+        
+    def actualizarUsuario():
+        
+        
