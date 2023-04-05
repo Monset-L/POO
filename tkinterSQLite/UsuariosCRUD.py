@@ -39,7 +39,14 @@ def ejecutarSelectCU():
     for datos in consultar:
         TablaC.insert("",tk.END, text="",values=datos)
 
+def ejecutarActualizar():
+    controlador.ActualizarUsuario(VarACid.get(),VarACnom.get(),VarACcor.get(),VarACcon.get())
     
+    
+def ejecutarEliminar(): 
+    controlador.EliminarUsuario(VarElid.get())
+     
+
 Ventana= Tk()
 Ventana.title("CRUD Usuarios")
 Ventana.geometry("500x300")
@@ -117,33 +124,44 @@ TablaC.pack()
 #Pestaña 4 Actualizar usuarios
 titulo4=Label(pestana4, text="Actualizar usuario",fg="green",font=("Modern",18)).pack()
 
+VarACid=tk.StringVar()
 Iid=Label(pestana4,text='ID: ')
 Iid.place(x=160,y=40)
-nid= tk.Entry(pestana4)
+nid= tk.Entry(pestana4,textvariable=VarACid)
 nid.place(x=220,y=40)
 
+VarACnom=tk.StringVar()
 Nnomb=Label(pestana4, text='Nombre: ')
 Nnomb.place(x=160, y=80)
-nnombre=tk.Entry(pestana4)
+nnombre=tk.Entry(pestana4,textvariable=VarACnom)
 nnombre.place(x=220, y=80)
 
+VarACcor=tk.StringVar()
 Ncorre= Label(pestana4, text='Correo: ')
 Ncorre.place(x=160, y=120)
-ncorreo=tk.Entry(pestana4)
+ncorreo=tk.Entry(pestana4,textvariable=VarACcor)
 ncorreo.place(x=220, y=120)
 
+VarACcon=tk.StringVar()
 Ncontr= Label(pestana4, text='Contraseña: ')
 Ncontr.place(x=150, y=160)
-ncontraseña=tk.Entry(pestana4)
+ncontraseña=tk.Entry(pestana4,textvariable=VarACcon)
 ncontraseña.place(x=220, y=160)
 
-btnActualizar=Button(pestana4,text="Actualizar")
+btnActualizar=Button(pestana4,text="Actualizar", command=ejecutarActualizar)
 btnActualizar.place(x=220, y=200)
 
 #Pestaña 5 Eliminar usuarios
 titulo5=Label(pestana5, text="Eliminar usuario",fg="green",font=("Modern",18)).pack()
 
+VarElid=tk.StringVar()
+Eid=Label(pestana5,text='ID: ')
+Eid.place(x=160,y=40)
+Elid= tk.Entry(pestana5,textvariable=VarElid)
+Elid.place(x=220,y=40)
 
+btnEliminar=Button(pestana5,text="Eliminar",command=ejecutarEliminar)
+btnEliminar.place(x=220, y=80)
 
 panel.add(pestana1,text="Registro de usuarios")
 panel.add(pestana2,text="Buscar usuario")
