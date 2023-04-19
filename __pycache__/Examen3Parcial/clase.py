@@ -31,16 +31,16 @@ class claseDB:
             conx.close()
             messagebox.showinfo("Éxito","Se guardaron los datos")
     
-    def EliminarDatos(self,id):
+    def EliminarDatos(self,IDExpo):
         conx =self.conexionBD()
-        if(id == ""):
+        if(IDExpo == ""):
             messagebox.showwarning("Cuidado", "Id vacio escribe uno valido")
             conx.close()
         else:
             try:
                 cursor = conx.cursor()
                 sqlDelte = ("DELETE FROM TBPedimentos WHERE IDExpo = ?")
-                dato=(id)
+                dato=(IDExpo)
                 Mensaje= messagebox.askokcancel("Cuidado", "Está seguro de que desea eliminar los datos?")
                 if Mensaje == True:
                     cursor.execute(sqlDelte,dato)
@@ -55,19 +55,20 @@ class claseDB:
                     print("Error Consulta")
                     
     
-    def consultaDato(self,Adu):
+    def consultaDato(self,Aduana):
         conx= self.conexionBD()
-        if(Adu == ""):
+        if(Aduana == ""):
             messagebox.showwarning("Cuidado", "Campo vacio escribe uno valido")
             conx.close()
         else:
             try:
                 cursor= conx.cursor()
-                sqlSelect="select * from TBPedimentos where Aduana="+Adu
+                sqlSelect="select * from TBPedimentos where Aduana="+Aduana
                 
                 cursor.execute(sqlSelect)
-                RSusuario = cursor.fetchall()
+                rsDato = cursor.fetchall()
                 conx.close()
-                return RSusuario
+                return rsDato
+            
             except sqlite3.OperationalError:
                 print("Error Consulta")
